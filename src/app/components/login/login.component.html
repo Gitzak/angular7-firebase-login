@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image"></div>
+    <div class="col-md-8 col-lg-5">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h2 class="login-heading mb-4 font-weight-bolder text-dark">Welcome back!</h2>
+              <form #form="ngForm">
+                <div class="form-label-group">
+                  <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email"
+                    [ngClass]="{'is-invalid': email.invalid && email.touched}" class="form-control"
+                    placeholder="Email address" required>
+                  <div *ngIf="email.invalid && email.touched" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email is not valid</div>
+                  </div>
+                  <label for="email">Email address</label>
+                </div>
+                <div class="form-label-group">
+                  <input type="password" id="password" name="password" minlength="6" #password="ngModel"
+                    [(ngModel)]="user.password" [ngClass]="{'is-invalid': password.invalid && password.touched}"
+                    class="form-control" placeholder="Password" required>
+                  <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password should be at least
+                      {{ password.errors.minlength.requiredLength }} caracters</div>
+                    <div *ngIf="password.errors.pattern">Password is not valid</div>
+                  </div>
+                  <label for="password">Password</label>
+                </div>
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Remember password</label>
+                </div>
+                <button (click)='loginWithEmailAndPassword()' [disabled]="form.invalid"
+                  class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign
+                  in</button>
+                <div class="text-center">
+                  <a class="small font-weight-bolder" href="#">Forgot password?</a>
+                </div>
+                <hr class="my-4">
+                <div class="text-center font-weight-bolder mb-4">
+                  <span>Not a member yet?</span> <a routerLink="/register"> Sign up</a>
+                </div>
+                <button (click)='loginWithGoogle()' class="btn btn-lg btn-google btn-block text-uppercase"><i
+                    class="fa fa-google mr-2"></i> Sign in with Google</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image"></div>
+    <div class="col-md-8 col-lg-5">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h2 class="login-heading mb-4 font-weight-bolder text-primary">Sign up</h2>
+              <form #form="ngForm">
+                <div class="form-label-group">
+                  <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email"
+                    [ngClass]="{'is-invalid': email.invalid && email.touched}" class="form-control"
+                    placeholder="Email address" required>
+                  <div *ngIf="email.invalid && email.touched" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email is not valid</div>
+                  </div>
+                  <label for="email">Email address</label>
+                </div>
+                <div class="form-label-group">
+                  <input type="password" id="password" name="password" minlength="6" #password="ngModel"
+                    [(ngModel)]="user.password" [ngClass]="{'is-invalid': password.invalid && password.touched}"
+                    class="form-control" placeholder="Password" required>
+                  <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password should be at least
+                      {{ password.errors.minlength.requiredLength }} caracters</div>
+                    <div *ngIf="password.errors.pattern">Password is not valid</div>
+                  </div>
+                  <label for="password">Password</label>
+                </div>
+                <button (click)='createUser()' [disabled]="form.invalid"
+                  class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
+                  <i class="fa fa-lock"></i> Register</button>
+                <hr class="my-4">
+                <div class="text-center font-weight-bolder mb-4">
+                  <span>You already have an account</span> <a routerLink="/login"> Log in now</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
