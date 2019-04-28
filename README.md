@@ -1,5 +1,7 @@
 # MyAppAngular
 
+![angular7-firebase-login](https://i.pinimg.com/originals/b8/39/1a/b8391a0d90b6eceb025084f8983321f2.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
 
 ## Development server
